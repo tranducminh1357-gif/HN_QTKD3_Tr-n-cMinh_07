@@ -87,21 +87,23 @@ Select ReaderId, ReaderName
 -- Lấy ra danh sách mượn sách (ReaderId, BookId, BorrowDate) mà chưa có ngày trả.
 Select ReaderId, BookId, BorrowDate
   From BorrowRecords
-  Where ReturnDate = Null;
+  Where ReturnDate IS Null;
 
 -- Tìm các sách có tên (Title) chứa từ "Nhan".
 Select *
    From Books
-   Where title = Nhan;
+   Where title like '%Nhan%';
    
    
 -- Lấy ra danh sách mượn sách, sắp xếp theo Số lượng sách mượn (BorrowedQuantity) giảm dần.
-
+SELECT *
+FROM BorrowRecords
+ORDER BY BorrowedQuantity DESC;
 
 -- Lấy ra thông tin của 1 cuốn sách có giá tiền cao nhất.
-Select *
-  From Books
-  Having price limit 1;
+SELECT *
+FROM Books
+ORDER BY Price DESC LIMIT 1;
 
 
 
